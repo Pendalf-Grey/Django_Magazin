@@ -6,13 +6,9 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .forms import UserLoginForm, UserRegistrationForm, ProfileForm
-from goods.models import Categories
 
 
 def login(request):
-
-    categories = Categories.objects.all()
-
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
 
@@ -35,7 +31,6 @@ def login(request):
     context = {
         'title': 'Home - Авторизация',
         'form': form,
-        'categories': categories
 
     }
 
@@ -43,9 +38,6 @@ def login(request):
 
 
 def registration(request):
-
-    categories = Categories.objects.all()
-
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
@@ -60,7 +52,6 @@ def registration(request):
     context = {
         'title': 'Home - Регистрация',
         'form': form,
-        'categories': categories
     }
 
     return render(request, 'users/registration.html', context)
@@ -68,9 +59,6 @@ def registration(request):
 
 @login_required
 def profile(request):
-
-    categories = Categories.objects.all()
-
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
@@ -83,7 +71,7 @@ def profile(request):
     context = {
         'title': 'Home - Профиль',
         'form': form,
-        'categories': categories
+
     }
 
     return render(request, 'users/profile.html', context)

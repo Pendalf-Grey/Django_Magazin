@@ -1,4 +1,5 @@
 {% load static %}
+{% load goods_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,9 +60,11 @@
                                 <li><a class="dropdown-item  text-white" href="carts/cart.html">Корзина</a></li>
                                 <li><a class="dropdown-item  text-white" href="{% url 'users:profile' %}">Личный кабинет</a>
                                 </li>
+
                                 {% if user.is_admin or user.is_staff %}
                                     <li><a class="dropdown-item  text-white" href="{% url 'admin:index' %}">Админ панель</a></li>
                                 {% endif %}
+
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -92,8 +95,9 @@
                 </button>
                 <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
 
+                    {% tag_categories as categories %}
                     {% for category in categories %}
-                        <li><a class="dropdown-item text-white" href="{% url 'catalog:index' %}">{{category.name}}</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url 'catalog:index' %}">{{ category.name }}</a></li>
                     {% endfor %}
 
                 </ul>
