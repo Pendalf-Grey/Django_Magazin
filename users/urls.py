@@ -9,4 +9,6 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('', views.logout, name='logout'),
 
+    path('users-cart', views.users_cart, name='users_cart'),
+
 ]

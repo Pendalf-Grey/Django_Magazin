@@ -49,3 +49,7 @@ class Products(models.Model):
 
     def product_display(self):
         return f'{self.id:05}'
+
+
+    # def price(self):
+

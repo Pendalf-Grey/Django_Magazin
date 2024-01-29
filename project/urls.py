@@ -16,7 +16,7 @@ urlpatterns = [
 
     path('user/', include('users.urls', namespace='user')),
 
-    # path('cart/', include('cart.urls', namespace='cart')),
+    path('cart/', include('cart.urls', namespace='cart')),
 
 ]
 
