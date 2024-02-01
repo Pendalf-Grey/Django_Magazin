@@ -1,10 +1,15 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+
+from goods.models import Categories
 
 
 def index(request):
+
+
     context = {
         'title': 'Home - Главная',
-        'content': 'Магазин мебели HOME',
+        'content': "Магазин мебели HOME",
     }
 
     return render(request, 'main/index.html', context)
@@ -13,9 +18,8 @@ def index(request):
 def about(request):
     context = {
         'title': 'Home - О нас',
-        'content': 'О нас',
-        'text_on_page': 'Мы, компания Home заботимся о вашем уюте. '
-                        'Home - одна из крупнейших компаний на рынке производства мебели для дома и офиса',
+        'content': "О нас",
+        'text_on_page': "Текст о том почему этот магазин такой классный, и какой хороший товар."
     }
 
     return render(request, 'main/about.html', context)

@@ -13,13 +13,9 @@ urlpatterns = [
 
     path('user/', include('users.urls', namespace='user')),
 
-    path('cart/', include('cart.urls', namespace='cart')),
+    path('carts/', include('carts.urls', namespace='carts')),
 
 ]
 
-if DEBUG:
-    urlpatterns += [
-        path("__debug__/", include("debug_toolbar.urls")),
-    ]
 
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
